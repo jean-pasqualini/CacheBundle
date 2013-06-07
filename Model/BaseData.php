@@ -4,18 +4,18 @@ namespace Adibox\Bundle\CacheBundle\Model;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-use Adibox\Bundle\RenderBundle\RenderObject\interfaceData;
+use Adibox\Bundle\CacheBundle\Interfaces\interfaceData;
 
-abstract class BaseRender extends ContainerAware implements interfaceData
+abstract class BaseData extends ContainerAware implements interfaceData
 {
 	public function getUser()
 	{
-
+		return $this->container->get('security.context')->getToken()->getUser();
 	}
 
 	public function getEntityManager()
 	{
-
+		
 	}
 
 	public function transIn($phrase)

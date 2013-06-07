@@ -1,3 +1,0 @@
-adibox_cache_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AdiboxCacheBundle:Default:index }
