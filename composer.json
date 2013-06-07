@@ -20,5 +20,5 @@
     "autoload":     {
         "psr-0": { "Adibox\\Bundle\\CacheBundle": "" }
     },
-    "target-dir": "Adibox/Bundle/RenderBundle"
+    "target-dir": "Adibox/Bundle/CacheBundle"
 }
