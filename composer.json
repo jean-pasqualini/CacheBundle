@@ -1,6 +1,6 @@
 {
     "name":         "adibox/adibox-cache-bundle",
-    "description":  "This bundle provide menanism cache complexe render data",
+    "description":  "This bundle provide menanism cache complexe render datas",
     "keywords":     ["cache"],
     "type":         "symfony-bundle",
     "license":      "MIT",
