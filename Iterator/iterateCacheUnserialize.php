@@ -3,7 +3,7 @@ namespace Adibox\Bundle\CacheBundle\Iterator;
 
 class iterateCacheUnserialize implements \Iterator,\Countable {
 
-	private $caches;
+	private $caches = array();
     private $cacheManager;
     private $isUpdateRequired;
 
@@ -63,6 +63,8 @@ class iterateCacheUnserialize implements \Iterator,\Countable {
 
     private function isUpdateRequireForElement($cache)
     {
+        if(!is_array($cache)) return true;
+
         if($cache["id_cached"] == null || $cache["isupdate"])
         {
             return true;
@@ -70,6 +72,16 @@ class iterateCacheUnserialize implements \Iterator,\Countable {
 
 
         return false;
+    }
+
+    public function appendTop($item)
+    {
+        array_unshift($this->caches, $item);
+    }
+
+    public function appendBottom($item)
+    {
+        array_push($this->caches, $item);
     }
 
     public function current()
