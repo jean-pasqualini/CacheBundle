@@ -15,7 +15,7 @@ abstract class BaseData extends ContainerAware implements interfaceData
 
 	public function getEntityManager()
 	{
-		
+		return $this->container->get("doctrine.orm.entity_manager");
 	}
 
 	public function transIn($phrase)
