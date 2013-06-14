@@ -1,7 +1,10 @@
 parameters:
-#    adibox_cache.example.class: Adibox\Bundle\CacheBundle\Example
+    adibox_cachebundle.twigextension.cachehelper.class: Adibox\Bundle\CacheBundle\TwigExtension\CacheHelper
 
 services:
-#    adibox_cache.example:
-#        class: %adibox_cache.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+     adibox_cachebundle.twigextension.cachehelper:
+         class: %adibox_cachebundle.twigextension.cachehelper.class%
+         calls:
+             - [setContainer, ["@service_container"]]
+         tags:
+             - { name: twig.extension }

@@ -17,8 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Cache
 {
-	/**
-	* @ORM\Column(name="id_cached", type="integer")
+    /**
+    * @ORM\Column(name="id_cached", type="integer")
     * @ORM\Id
     */
     private $id_cached;
@@ -40,10 +40,9 @@ class Cache
     private $data;
 
     /**
-    * @ORM\Column(type="integer")
-    * @ORM\Version
+    * @ORM\Column(type="integer", options={"default" = 0}, nullable = true)
     */
-    private $version;
+    private $version = 0;
 
     /**
     * @ORM\Column(type="string")
@@ -52,9 +51,9 @@ class Cache
 
     public function __construct($id_cached, $name)
     {
-    	$this->id_cached = $id_cached;
+        $this->id_cached = $id_cached;
 
-    	$this->name = $name;
+        $this->name = $name;
     }
 
     public function getVersion()
@@ -88,6 +87,15 @@ class Cache
         $this->setIdHttp($this->generateIdHttp());
     }
 
+    /**
+    * @ORM\PrePersist()
+    * @ORM\PreUpdate()
+    */
+    public function incrementVersion()
+    {
+    $this->version ++;
+    }
+    
     public function getName()
     {
         return $this->name;
@@ -102,7 +110,7 @@ class Cache
     {
         if(!is_object($data) && is_array($data)) $data = new \ArrayObject($data);
 
-    	$this->data = $data;
+        $this->data = $data;
 
         $this->updateNotRequired();
 
