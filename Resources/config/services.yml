@@ -8,3 +8,9 @@ services:
              - [setContainer, ["@service_container"]]
          tags:
              - { name: twig.extension }
+
+     adibox_cachebundle.kernelevent.listener:
+         class: Adibox\Bundle\CacheBundle\EventListener\listener
+         arguments: [@service_container]
+         tags:
+             - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 110 }
